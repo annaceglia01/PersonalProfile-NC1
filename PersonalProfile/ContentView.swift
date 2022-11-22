@@ -15,46 +15,40 @@ struct ContentView: View {
     }
     
     var body: some View {
-        
-            TabView(selection: $selectedTab) {
-                DashboardView()
-                    .tabItem {
-                        Label("Dashboard", systemImage: "house")
-                    }
-                    .tag("Dashboard")
-                
-                Text("Tab 2")
-                    .tabItem {
-                        Label("My Network", systemImage: "person.2")
-                    }
-                    .tag("My Network")
-                
-                Text("Tab 3")
-                    .tabItem {
-                        Label("Post", systemImage: "plus.app")
-                    }
-                    .tag("Post")
-                
-                Text("Tab 4")
-                    .tabItem {
-                        Label("Notifications", systemImage: "bell")
-                    }
-                    .tag("Notifictions")
-                
-                Text("Tab 5")
-                    .tabItem {
-                        Label("Jobs", systemImage: "briefcase")
-                    }
-                    .tag("Jobs")
-                
-            }//TabView
+        TabView(selection: $selectedTab) {
+            DashboardView()
+                .tabItem {
+                    Label("Dashboard", systemImage: "house")
+                }
+                .tag("Dashboard")
             
-        }//Body
+            Text("My Network")
+                .tabItem {
+                    Label("My Network", systemImage: "person.2")
+                }
+                .tag("My Network")
+            
+            Text("Notifictions")
+                .tabItem {
+                    Label("Notifications", systemImage: "bell")
+                }
+                .tag("Notifictions")
+            
+            Text("Jobs")
+                .tabItem {
+                    Label("Jobs", systemImage: "briefcase")
+                }
+                .tag("Jobs")
+            
+        }//TabView
         
-    }//View
+    }//Body
+    
+}//View
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+        
     }
 }

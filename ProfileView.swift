@@ -9,40 +9,40 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var viewModel = InfoViewModel()
+    @State var sheetIsPresented : Bool = false
     
     var body: some View {
-        VStack {
-            ZStack(alignment: .top){
-                Image("Copertina")
-                    .resizable()
-                    .frame(height: 100)
-                
-                Image("ImageProfile")
-                    .resizable()
-                    .clipShape(Circle())
-                    .aspectRatio(contentMode: .fit)
-                    .overlay(
-                        Circle()
-                            .stroke(Color(.systemGray6), lineWidth: 6)
-                    )
-                    .frame(width: 130)
-                    .padding(.top, 40)
-                
-            }//ZStack
-            
-            Text("Anna Ceglia")
-                .fontWeight(.semibold)
-            
-            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")
-                .padding(.horizontal)
-                .padding(.top, 1)
-                .multilineTextAlignment(.center)
-                .lineLimit(2)
-            
+        ScrollView{
             VStack {
-                Form {
-                    Section {
-                        List {
+                ZStack(alignment: .top){
+                    Image("Copertina")
+                        .resizable()
+                        .frame(height: 100)
+                    
+                    Image("Profile")
+                        .resizable()
+                        .clipShape(Circle())
+                        .aspectRatio(contentMode: .fit)
+                        .overlay(
+                            Circle()
+                                .stroke(Color(.systemGray6), lineWidth: 6)
+                        )
+                        .frame(width: 130)
+                        .padding(.top, 40)
+                    
+                }//ZStack
+                
+                Text("Anna Ceglia")
+                    .fontWeight(.semibold)
+                
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")
+                    .padding(.horizontal)
+                    .padding(.top, 1)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                
+                    List {
+                        Section {
                             ForEach(viewModel.info) { info in
                                 NavigationLink {
                                     Text(info.name)
@@ -52,12 +52,9 @@ struct ProfileView: View {
                                 
                             }//ForEach
                             
-                        }//Lista
+                        }//Section
                         
-                    }//Section
-                    
-                    Section {
-                        List {
+                        Section {
                             ForEach(viewModel.info2) { info in
                                 NavigationLink {
                                     Text(info.name)
@@ -65,20 +62,19 @@ struct ProfileView: View {
                                     Text(info.name)
                                 }
                                 
-                            }//ForEach
+                            }//ForEach2
                             
-                        }//Lista2
+                        }//Section2
                         
-                    }//Section2
-                    
-                }//Form
+                    }//List
+                    .listStyle(.insetGrouped)
+                    .scrollDisabled(true)
+                    .scaledToFill()
                 
             }//VStack
             
-            Spacer()
-            
-        }//VStack
-        .background(Color(uiColor: .systemGray6))
+        }//ScrollView
+        .background(Color(.systemGroupedBackground))
         .toolbar {
             ToolbarItemGroup (placement: .navigationBarTrailing) {
                 Button("Edit") {
@@ -86,9 +82,13 @@ struct ProfileView: View {
                 }
                 
                 Button {
-                    print("Button pressed")
+                    self.sheetIsPresented.toggle()
                 } label: {
                     Image(systemName: "ellipsis.circle")
+                }
+                .sheet(isPresented: $sheetIsPresented) {
+                    SheetView()
+                        .presentationDetents([.fraction(0.35), .fraction(1)])
                 }
                 
             }//ToolbarItemGroup
