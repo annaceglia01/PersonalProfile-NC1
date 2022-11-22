@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @State private var path = NavigationPath()
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             NavigationLink {
                 ProfileView()
             } label: {

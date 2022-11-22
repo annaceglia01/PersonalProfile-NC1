@@ -19,33 +19,33 @@ struct ContentView: View {
             TabView(selection: $selectedTab) {
                 DashboardView()
                     .tabItem {
-                        Label("One", systemImage: "star")
+                        Label("Dashboard", systemImage: "house")
                     }
-                    .tag("One")
+                    .tag("Dashboard")
                 
                 Text("Tab 2")
                     .tabItem {
-                        Label("Two", systemImage: "circle")
+                        Label("My Network", systemImage: "person.2")
                     }
-                    .tag("Two")
+                    .tag("My Network")
                 
                 Text("Tab 3")
                     .tabItem {
-                        Label("Three", systemImage: "circle")
+                        Label("Post", systemImage: "plus.app")
                     }
-                    .tag("Three")
+                    .tag("Post")
                 
                 Text("Tab 4")
                     .tabItem {
-                        Label("Four", systemImage: "circle")
+                        Label("Notifications", systemImage: "bell")
                     }
-                    .tag("Four")
+                    .tag("Notifictions")
                 
                 Text("Tab 5")
                     .tabItem {
-                        Label("Five", systemImage: "circle")
+                        Label("Jobs", systemImage: "briefcase")
                     }
-                    .tag("Five")
+                    .tag("Jobs")
                 
             }//TabView
             

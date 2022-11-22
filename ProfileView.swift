@@ -23,7 +23,7 @@ struct ProfileView: View {
                     .aspectRatio(contentMode: .fit)
                     .overlay(
                         Circle()
-                            .stroke(.white, lineWidth: 6)
+                            .stroke(Color(.systemGray6), lineWidth: 6)
                     )
                     .frame(width: 130)
                     .padding(.top, 40)
@@ -39,34 +39,61 @@ struct ProfileView: View {
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
             
-            List {
-                ForEach(viewModel.info) { info in
-                    NavigationLink {
-                        <#code#>
-                    } label: {
-                        <#code#>
-                    }
-
+            VStack {
+                Form {
+                    Section {
+                        List {
+                            ForEach(viewModel.info) { info in
+                                NavigationLink {
+                                    Text(info.name)
+                                } label: {
+                                    Text(info.name)
+                                }
+                                
+                            }//ForEach
+                            
+                        }//Lista
+                        
+                    }//Section
                     
-                }
-            }
-            
+                    Section {
+                        List {
+                            ForEach(viewModel.info2) { info in
+                                NavigationLink {
+                                    Text(info.name)
+                                } label: {
+                                    Text(info.name)
+                                }
+                                
+                            }//ForEach
+                            
+                        }//Lista2
+                        
+                    }//Section2
+                    
+                }//Form
+                
+            }//VStack
             
             Spacer()
             
         }//VStack
+        .background(Color(uiColor: .systemGray6))
         .toolbar {
             ToolbarItemGroup (placement: .navigationBarTrailing) {
                 Button("Edit") {
                     print("Edit tapped!")
                 }
                 
-                Button("More") {
-                    print("More tapped")
+                Button {
+                    print("Button pressed")
+                } label: {
+                    Image(systemName: "ellipsis.circle")
                 }
+                
             }//ToolbarItemGroup
             
-        }//.toolbar
+        }//toolbar
         
     }//Body
     
@@ -77,3 +104,4 @@ struct ProfileView_Previews: PreviewProvider {
         ProfileView()
     }
 }
+
