@@ -35,11 +35,14 @@ struct ProfileView: View {
                 Text("Anna Ceglia")
                     .fontWeight(.semibold)
                 
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")
+                Text("Studentessa di Scienze Biologiche ed Apple Developer Academy")
                     .padding(.horizontal)
                     .padding(.top, 1)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
+                Spacer()
+                Text("Apple Developer Academy @Unina Fderico II")
+                    .font(.system(size: 15))
                 
                     List {
                         Section {

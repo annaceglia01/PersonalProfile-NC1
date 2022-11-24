@@ -10,10 +10,11 @@ import SwiftUI
 struct DashboardView: View {
     @State private var path = NavigationPath()
     @State var searchText = ""
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationStack(path: $path) {
-            Image("Homepage")
+            Image(colorScheme == .dark ? "HomepageDark" : "Homepage")
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarLeading){
                         NavigationLink {
@@ -48,7 +49,7 @@ struct DashboardView: View {
                         Button {
                             print("Edit tapped!")
                         } label: {
-                            Image(systemName: "pencil")
+                            Image(systemName: "square.and.pencil")
                         }
                         
                     }//ToolbarItemGroup
